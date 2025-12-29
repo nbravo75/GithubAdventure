@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+.env
+crypted_pass.cfg
+keyring_pass.cfg
+keyring_pass.cfg.lock
+# user-specific Python packages (don't commit local site-packages)
+*/Library/Python/*
+# macOS files
+.DS_Store
