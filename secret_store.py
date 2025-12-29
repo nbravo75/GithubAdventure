@@ -8,9 +8,9 @@ Functions:
 
 This module keeps the API minimal so apps can import and use it.
 """
-from typing import Optional
 import os
 import re
+from typing import Optional
 
 
 def _env_name(service: str, account: str) -> str:
@@ -33,6 +33,7 @@ def get_secret(service: str, account: str, use_env: bool = True) -> Optional[str
 
     try:
         import keyring
+
         val = keyring.get_password(service, account)
         if val:
             print("Using keyring backend")
@@ -52,6 +53,7 @@ def ensure_encrypted_backend() -> bool:
     try:
         import keyring
         from keyrings.alt.file import EncryptedKeyring
+
         keyring.set_keyring(EncryptedKeyring())
         return True
     except Exception:
