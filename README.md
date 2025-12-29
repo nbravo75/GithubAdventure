@@ -2,6 +2,47 @@ Keyring detection and fallback helper (macOS)
 
 [![CI](https://github.com/nbravo75/GithubAdventure/actions/workflows/ci.yml/badge.svg)](https://github.com/nbravo75/GithubAdventure/actions/workflows/ci.yml)
 
+Quick Start
+
+1) Install deps
+
+```bash
+pip3 install --user -r requirements.txt
+```
+
+2) Detect available keyrings
+
+```bash
+python3 detect_keyring.py
+```
+
+3) Use env var fallback (no prompts)
+
+```bash
+export MY_SERVICE_MY_ACCOUNT_SECRET='demo-secret'
+python3 wrapper_demo.py get my-service my-account
+```
+
+4) Store/read with encrypted-file backend
+
+```bash
+# store (first time will create an encrypted keyring file and may prompt)
+python3 wrapper_demo.py set my-service my-account 'demo-secret'
+
+# read
+python3 wrapper_demo.py get my-service my-account
+```
+
+5) Use in your code
+
+```py
+from secret_store import get_secret, set_secret, ensure_encrypted_backend
+
+ensure_encrypted_backend()  # optional: enforce encrypted file backend
+set_secret('my-service', 'my-account', 's3cr3t')
+print(get_secret('my-service', 'my-account'))
+```
+
 Files:
 - detect_keyring.py: Detects the active Python `keyring` backend and shows fallback options.
 - requirements.txt: Python dependencies (`keyring`, `keyrings.alt`).
