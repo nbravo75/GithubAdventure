@@ -1,5 +1,7 @@
 Keyring detection and fallback helper (macOS)
 
+[![CI](https://github.com/nbravo75/GithubAdventure/actions/workflows/ci.yml/badge.svg)](https://github.com/nbravo75/GithubAdventure/actions/workflows/ci.yml)
+
 Files:
 - detect_keyring.py: Detects the active Python `keyring` backend and shows fallback options.
 - requirements.txt: Python dependencies (`keyring`, `keyrings.alt`).
